@@ -1,0 +1,51 @@
+# Field and value mapping. Copy to mapping.yaml and set FTQ_MAPPING=config/mapping.yaml
+#
+# fields: which field in the tool holds each value
+# values: how the tool's values translate to the standard ones
+#   severity:  S1 (Critical) / S2 (High) / S3 (Medium) / S4 (Low)
+#   priority:  P1 / P2 / P3 / P4
+#   status:    New, Assigned, Open, Fixed, Retest, Reopened, Verified, Closed, Rejected, Deferred
+#   category:  Functional, Data, Environment, Requirement, Interface, Usability, Compatibility,
+#              Performance, Security, Accessibility, Not reproducible, Tester error
+#   found_in:  Unit, System, SIT, E2E, UAT, Penny, Production
+#   source:    Manual, Automation, Performance, Security, Compliance, Production
+#   channel:   Mobile app, Web, APIs and backend, Legacy
+#   interface: None, Upstream, Downstream, External, Legacy
+# Common names (Blocker, Major, Done, In Progress, ...) are already built in.
+# GET /mapping/gaps lists every value that still needs a line here.
+tools:
+  jira:
+    fields:
+      severity: customfield_10050     # your "Severity" custom field
+      category: label:cat-            # label "cat-data" -> Data
+      found_in: customfield_10061     # "Found in" (test level)
+      source: label:src-              # label "src-automation" -> Automation
+      channel: component              # first component
+      interface: customfield_10062
+      application: customfield_10063
+      owner_team: customfield_10001   # Team
+      sprint: customfield_10020
+      test_type: label:tt-            # label "tt-exploratory"
+    values:
+      severity:
+        "Sev 1 - Outage": S1
+        "Sev 2 - Major": S2
+      status:
+        "Waiting for UAT": Retest
+        "Moved to next release": Deferred
+
+  qtest:
+    fields:
+      owner_team: Squad
+    values:
+      status:
+        "Pending Retest": Retest
+
+  alm:
+    fields:
+      category: user-03
+      found_in: user-05
+      application: user-07
+    values:
+      status:
+        "Fixed - Pending Deploy": Fixed

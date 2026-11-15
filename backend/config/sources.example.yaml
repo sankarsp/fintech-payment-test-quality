@@ -1,0 +1,35 @@
+# Which tools to read. Copy to sources.yaml and set FTQ_SOURCES=config/sources.yaml
+# Secrets are never written here: use ${ENV_VAR} and set the variable.
+sources:
+  - name: Jira - Payments
+    type: jira
+    settings:
+      base_url: https://your-site.atlassian.net
+      email: ${JIRA_EMAIL}
+      api_token: ${JIRA_API_TOKEN}
+      jql: project = PAY AND issuetype = Bug ORDER BY created ASC
+
+  - name: qTest - Payments
+    type: qtest
+    settings:
+      base_url: https://yourcompany.qtestnet.com
+      token: ${QTEST_TOKEN}
+      project_id: 12345
+
+  - name: ALM - Wires
+    type: alm
+    settings:
+      base_url: https://alm.yourcompany.com/qcbin
+      domain: PAYMENTS
+      project: WIRES
+      client_id: ${ALM_CLIENT_ID}
+      client_secret: ${ALM_CLIENT_SECRET}
+
+  - name: Excel export
+    type: csv
+    settings:
+      path: ./exports/bugs.csv
+      runs_path: ./exports/runs.csv
+
+  # - name: Demo
+  #   type: demo
