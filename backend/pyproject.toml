@@ -1,5 +1,5 @@
 [project]
-name = "fintech-test-quality"
+name = "fintech-payment-test-quality"
 version = "0.1.0"
 description = "Test quality reports and go / no-go for fintech teams, from Jira, qTest, ALM or CSV"
 requires-python = ">=3.11"

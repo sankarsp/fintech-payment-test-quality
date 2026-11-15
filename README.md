@@ -1,4 +1,4 @@
-# Fintech Test Quality Report
+# Fintech Payment Test Quality
 
 Connect your test and bug tools. Get the reports a test lead shares every week,
 and a clear go / no-go call, without building them by hand in Excel.
