@@ -1,7 +1,7 @@
 """Fintech Test Quality Report: API.
 
-Run:  uvicorn app.main:app --reload       (from the backend folder)
-Docs: http://localhost:8000/docs
+Run:  ./run.sh  (Windows: run.bat), from the backend folder
+Docs: http://localhost:8800/docs
 
 Configuration (env vars):
     FTQ_SOURCES  path to sources.yaml (which tools to read). Default: demo data.

@@ -19,10 +19,10 @@ The demo data gives the same numbers as the article's sample reports.
 ```bash
 cd backend
 pip install -e ".[dev]"
-uvicorn app.main:app --reload
+./run.sh          # Windows: run.bat
 ```
 
-Open http://localhost:8000/docs, then try `/reports/weekly-summary` or `/reports/go-no-go`.
+Open http://localhost:8800/docs, then try `/reports/weekly-summary` or `/reports/go-no-go`.
 
 ## Connect your tools
 
@@ -31,7 +31,7 @@ cp config/sources.example.yaml config/sources.yaml   # which tools
 cp config/mapping.example.yaml config/mapping.yaml   # your field and value names
 export FTQ_SOURCES=config/sources.yaml FTQ_MAPPING=config/mapping.yaml
 export JIRA_EMAIL=... JIRA_API_TOKEN=...
-uvicorn app.main:app
+./run.sh
 ```
 
 Then call `POST /sync` and check `GET /mapping/gaps` for any values that still need mapping.
@@ -42,6 +42,7 @@ Then call `POST /sync` and check `GET /mapping/gaps` for any values that still n
 cd backend && pytest
 ```
 
+The app runs on port 8800 by default; use `PORT=9000 ./run.sh` to change it.
 Connector tests use mocked HTTP, so no real tool is needed.
 
 See [docs/architecture.md](docs/architecture.md) for the design.
